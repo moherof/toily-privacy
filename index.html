@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Politique de confidentialité — Toily</title>
-  <meta name="description" content="Politique de confidentialité de l'application Toily : données collectées, hébergement, IA et vos droits RGPD." />
+  <title data-title-fr="Politique de confidentialité — Toily" data-title-en="Privacy Policy — Toily">Politique de confidentialité — Toily</title>
+  <meta name="description" id="meta-desc" content="Politique de confidentialité de l'application Toily : données collectées, hébergement, IA et vos droits RGPD." />
   <meta name="robots" content="index, follow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -39,15 +39,46 @@
       padding: 56px 24px 40px;
     }
     .hero-inner, main { max-width: 760px; margin: 0 auto; }
+    .hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0 0 20px;
+    }
     .brand {
       font-family: var(--display);
       font-weight: 800;
       font-size: 1.5rem;
       letter-spacing: -0.01em;
-      margin: 0 0 20px;
+      margin: 0;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+    }
+    .lang-switch {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      padding: 3px;
+      gap: 2px;
+    }
+    .lang-switch button {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.02em;
+      color: #fff;
+      background: transparent;
+      border: 0;
+      border-radius: 999px;
+      padding: 7px 16px;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .lang-switch button[aria-pressed="true"] {
+      background: #fff;
+      color: var(--primary800);
     }
     .hero h1 {
       font-family: var(--display);
@@ -97,113 +128,252 @@
       text-align: center;
       padding: 28px 24px 48px;
     }
+    /* No-JS fallback: French is shown by default, English hidden. */
+    [data-lang="en"] { display: none; }
+    /* JS flips the <html lang> attribute to switch languages. */
+    html[lang="en"] [data-lang="fr"] { display: none; }
+    html[lang="en"] [data-lang="en"] { display: block; }
   </style>
 </head>
 <body>
   <header class="hero">
     <div class="hero-inner">
-      <p class="brand">Toily</p>
-      <h1>Politique de confidentialité</h1>
-      <p class="updated">Dernière mise à jour : 4 juin 2026</p>
+      <div class="hero-top">
+        <p class="brand">Toily</p>
+        <div class="lang-switch" role="group" aria-label="Language / Langue">
+          <button type="button" data-set-lang="fr" aria-pressed="true">FR</button>
+          <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+      <h1 data-lang="fr">Politique de confidentialité</h1>
+      <h1 data-lang="en">Privacy Policy</h1>
+      <p class="updated" data-lang="fr">Dernière mise à jour : 27 juin 2026</p>
+      <p class="updated" data-lang="en">Last updated: June 27, 2026</p>
     </div>
   </header>
 
   <main>
-    <p class="sensitive">
-      Toily est une application de suivi du transit intestinal. Elle traite des
-      <strong>données concernant la santé</strong> (catégorie particulière au sens de
-      l'article&nbsp;9 du RGPD). Nous ne traitons ces données qu'avec votre
-      <strong>consentement explicite</strong>, donné à l'utilisation de l'application.
-    </p>
+    <!-- ===================== FRANÇAIS ===================== -->
+    <div data-lang="fr">
+      <p class="sensitive">
+        Toily est une application de suivi du transit intestinal. Elle traite des
+        <strong>données concernant la santé</strong> (catégorie particulière au sens de
+        l'article&nbsp;9 du RGPD). Nous ne traitons ces données qu'avec votre
+        <strong>consentement explicite</strong>, donné à l'utilisation de l'application.
+      </p>
 
-    <h2><span class="num">1.</span>Responsable du traitement</h2>
-    <p>
-      L'application <strong>Toily</strong> est éditée par Mohamed Fakir (« nous »).<br />
-      Contact : <a href="mailto:skeymapp@gmail.com">skeymapp@gmail.com</a>
-    </p>
+      <h2><span class="num">1.</span>Responsable du traitement</h2>
+      <p>
+        L'application <strong>Toily</strong> est éditée par Mohamed Fakir (« nous »).<br />
+        Contact : <a href="mailto:skeymapp@gmail.com">skeymapp@gmail.com</a>
+      </p>
 
-    <h2><span class="num">2.</span>Données que nous collectons</h2>
-    <ul>
-      <li><strong>Compte</strong> : adresse e-mail (si vous créez un compte) ou
-        identifiant Google (si connexion via Google). Vous pouvez aussi utiliser
-        l'application en <strong>mode invité anonyme</strong>, sans e-mail.</li>
-      <li><strong>Données de santé que vous saisissez</strong> : type de selle
-        (échelle de Bristol), couleur, niveau de douleur, éléments anormaux,
-        symptômes, facteurs déclencheurs, repas et notes libres, avec leur date
-        et heure.</li>
-      <li><strong>Photos (optionnel)</strong> : si vous utilisez l'analyse par IA,
-        la photo est transmise pour analyse puis <strong>n'est jamais stockée</strong>
-        sur nos serveurs ni chez nos prestataires. Seul le résultat de l'analyse
-        est conservé avec votre saisie.</li>
-      <li><strong>Données techniques locales</strong> : préférences de
-        notifications, file d'attente hors-ligne et brouillons, stockées
-        <strong>uniquement sur votre appareil</strong>.</li>
-    </ul>
+      <h2><span class="num">2.</span>Données que nous collectons</h2>
+      <ul>
+        <li><strong>Compte</strong> : adresse e-mail (si vous créez un compte) ou
+          identifiant Google ou Apple (si connexion via ces services). Vous pouvez aussi
+          utiliser l'application en <strong>mode invité anonyme</strong>, sans e-mail.</li>
+        <li><strong>Données de santé que vous saisissez</strong> : type de selle
+          (échelle de Bristol), couleur, niveau de douleur, éléments anormaux,
+          symptômes, facteurs déclencheurs, repas et notes libres, avec leur date
+          et heure.</li>
+        <li><strong>Photos (optionnel)</strong> : si vous utilisez l'analyse par IA,
+          la photo est transmise pour analyse puis <strong>n'est jamais stockée</strong>
+          sur nos serveurs ni chez nos prestataires. Seul le résultat de l'analyse
+          est conservé avec votre saisie.</li>
+        <li><strong>Données techniques locales</strong> : préférences de
+          notifications, file d'attente hors-ligne et brouillons, stockées
+          <strong>uniquement sur votre appareil</strong>.</li>
+      </ul>
 
-    <h2><span class="num">3.</span>Finalités et base légale</h2>
-    <ul>
-      <li>Fournir le suivi, l'historique et les statistiques → <strong>consentement</strong>.</li>
-      <li>Analyser une photo par IA, à votre demande → <strong>consentement explicite</strong>.</li>
-      <li>Sécuriser votre compte et la session → <strong>intérêt légitime</strong>.</li>
-    </ul>
+      <h2><span class="num">3.</span>Finalités et base légale</h2>
+      <ul>
+        <li>Fournir le suivi, l'historique et les statistiques → <strong>consentement</strong>.</li>
+        <li>Analyser une photo par IA, à votre demande → <strong>consentement explicite</strong>.</li>
+        <li>Sécuriser votre compte et la session → <strong>intérêt légitime</strong>.</li>
+      </ul>
 
-    <h2><span class="num">4.</span>Hébergement et destinataires</h2>
-    <p>
-      Vos données de compte et de santé sont stockées chez <strong>Supabase</strong>
-      (hébergement de base de données), au sein de l'<strong>Union européenne</strong>.
-    </p>
-    <p>
-      L'analyse par IA est réalisée par <strong>Google (API Gemini)</strong> : la photo
-      et les champs analysés sont transmis à Google pour produire le résultat.
-      Aucune autre donnée n'est partagée avec Google.
-    </p>
-    <p>Nous ne vendons ni ne louons vos données à des tiers.</p>
+      <h2><span class="num">4.</span>Hébergement et destinataires</h2>
+      <p>
+        Vos données de compte et de santé sont stockées chez <strong>Supabase</strong>
+        (hébergement de base de données), au sein de l'<strong>Union européenne</strong>.
+      </p>
+      <p>
+        L'analyse par IA est réalisée par <strong>Google (API Gemini)</strong> : la photo
+        et les champs analysés sont transmis à Google pour produire le résultat.
+        Aucune autre donnée n'est partagée avec Google.
+      </p>
+      <p>Nous ne vendons ni ne louons vos données à des tiers.</p>
 
-    <h2><span class="num">5.</span>Durée de conservation</h2>
-    <p>
-      Vos données sont conservées tant que votre compte existe. À la suppression
-      de votre compte, elles sont effacées. Les données du mode invité anonyme
-      restent jusqu'à la désinstallation de l'application ou leur suppression
-      manuelle.
-    </p>
+      <h2><span class="num">5.</span>Durée de conservation</h2>
+      <p>
+        Vos données sont conservées tant que votre compte existe. À la suppression
+        de votre compte, elles sont effacées. Les données du mode invité anonyme
+        restent jusqu'à la désinstallation de l'application ou leur suppression
+        manuelle.
+      </p>
 
-    <h2><span class="num">6.</span>Vos droits (RGPD)</h2>
-    <p>
-      Vous disposez des droits d'accès, de rectification, d'effacement, de
-      limitation, de portabilité et d'opposition. Vous pouvez exporter vos données
-      depuis l'application (rapport PDF) et demander la suppression de votre compte
-      et de vos données en nous écrivant. Nous répondons sous 30 jours. Vous pouvez
-      également saisir la CNIL (<a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>).
-    </p>
+      <h2><span class="num">6.</span>Vos droits (RGPD)</h2>
+      <p>
+        Vous disposez des droits d'accès, de rectification, d'effacement, de
+        limitation, de portabilité et d'opposition. Vous pouvez exporter vos données
+        depuis l'application (rapport PDF), supprimer votre compte et vos données
+        directement dans l'application (Profil → Supprimer mon compte), ou nous écrire.
+        Nous répondons sous 30 jours. Vous pouvez également saisir la CNIL
+        (<a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>).
+      </p>
 
-    <h2><span class="num">7.</span>Sécurité</h2>
-    <p>
-      Les échanges sont chiffrés (HTTPS). L'accès à vos données est isolé par
-      compte (Row Level Security). La session est stockée de façon chiffrée sur
-      votre appareil.
-    </p>
+      <h2><span class="num">7.</span>Sécurité</h2>
+      <p>
+        Les échanges sont chiffrés (HTTPS). L'accès à vos données est isolé par
+        compte (Row Level Security). La session est stockée de façon chiffrée sur
+        votre appareil.
+      </p>
 
-    <h2><span class="num">8.</span>Mineurs</h2>
-    <p>
-      Toily n'est pas destinée aux enfants de moins de 15 ans. Nous ne collectons
-      pas sciemment leurs données.
-    </p>
+      <h2><span class="num">8.</span>Mineurs</h2>
+      <p>
+        Toily n'est pas destinée aux enfants de moins de 15 ans. Nous ne collectons
+        pas sciemment leurs données.
+      </p>
 
-    <h2><span class="num">9.</span>Modifications</h2>
-    <p>
-      Nous pouvons mettre à jour cette politique. La date en haut de page indique
-      la dernière révision.
-    </p>
+      <h2><span class="num">9.</span>Modifications</h2>
+      <p>
+        Nous pouvons mettre à jour cette politique. La date en haut de page indique
+        la dernière révision.
+      </p>
 
-    <h2><span class="num">10.</span>Contact</h2>
-    <div class="contact-card">
-      Pour toute question relative à vos données :<br />
-      <a href="mailto:skeymapp@gmail.com">skeymapp@gmail.com</a>
+      <h2><span class="num">10.</span>Contact</h2>
+      <div class="contact-card">
+        Pour toute question relative à vos données :<br />
+        <a href="mailto:skeymapp@gmail.com">skeymapp@gmail.com</a>
+      </div>
+    </div>
+
+    <!-- ===================== ENGLISH ===================== -->
+    <div data-lang="en">
+      <p class="sensitive">
+        Toily is a bowel-tracking app. It processes <strong>health-related data</strong>
+        (a special category under Article&nbsp;9 of the GDPR). We only process this data
+        with your <strong>explicit consent</strong>, given when you use the app.
+      </p>
+
+      <h2><span class="num">1.</span>Data controller</h2>
+      <p>
+        The <strong>Toily</strong> app is published by Mohamed Fakir (“we”).<br />
+        Contact: <a href="mailto:skeymapp@gmail.com">skeymapp@gmail.com</a>
+      </p>
+
+      <h2><span class="num">2.</span>Data we collect</h2>
+      <ul>
+        <li><strong>Account</strong>: email address (if you create an account) or a
+          Google or Apple identifier (if you sign in with those services). You can also
+          use the app in <strong>anonymous guest mode</strong>, without an email.</li>
+        <li><strong>Health data you enter</strong>: stool type (Bristol scale), color,
+          pain level, abnormal elements, symptoms, triggers, meals and free-text notes,
+          along with their date and time.</li>
+        <li><strong>Photos (optional)</strong>: if you use AI analysis, the photo is sent
+          for analysis and is <strong>never stored</strong> on our servers or by our
+          providers. Only the result of the analysis is kept with your entry.</li>
+        <li><strong>Local technical data</strong>: notification preferences, the offline
+          queue and drafts, stored <strong>only on your device</strong>.</li>
+      </ul>
+
+      <h2><span class="num">3.</span>Purposes and legal basis</h2>
+      <ul>
+        <li>Provide tracking, history and statistics → <strong>consent</strong>.</li>
+        <li>Analyze a photo with AI, at your request → <strong>explicit consent</strong>.</li>
+        <li>Secure your account and session → <strong>legitimate interest</strong>.</li>
+      </ul>
+
+      <h2><span class="num">4.</span>Hosting and recipients</h2>
+      <p>
+        Your account and health data are stored with <strong>Supabase</strong>
+        (database hosting), within the <strong>European Union</strong>.
+      </p>
+      <p>
+        AI analysis is performed by <strong>Google (Gemini API)</strong>: the photo and
+        the analyzed fields are sent to Google to produce the result. No other data is
+        shared with Google.
+      </p>
+      <p>We do not sell or rent your data to third parties.</p>
+
+      <h2><span class="num">5.</span>Data retention</h2>
+      <p>
+        Your data is kept for as long as your account exists. When you delete your
+        account, it is erased. Anonymous guest-mode data remains until you uninstall
+        the app or delete it manually.
+      </p>
+
+      <h2><span class="num">6.</span>Your rights (GDPR)</h2>
+      <p>
+        You have the rights of access, rectification, erasure, restriction, portability
+        and objection. You can export your data from the app (PDF report), delete your
+        account and data directly in the app (Profile → Delete my account), or contact
+        us. We respond within 30 days. You may also lodge a complaint with the French
+        data protection authority, the CNIL
+        (<a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>).
+      </p>
+
+      <h2><span class="num">7.</span>Security</h2>
+      <p>
+        Data is encrypted in transit (HTTPS). Access to your data is isolated per
+        account (Row Level Security). Your session is stored encrypted on your device.
+      </p>
+
+      <h2><span class="num">8.</span>Minors</h2>
+      <p>
+        Toily is not intended for children under 15. We do not knowingly collect their
+        data.
+      </p>
+
+      <h2><span class="num">9.</span>Changes</h2>
+      <p>
+        We may update this policy. The date at the top of the page indicates the latest
+        revision.
+      </p>
+
+      <h2><span class="num">10.</span>Contact</h2>
+      <div class="contact-card">
+        For any question about your data:<br />
+        <a href="mailto:skeymapp@gmail.com">skeymapp@gmail.com</a>
+      </div>
     </div>
   </main>
 
   <footer>
     © 2026 Toily — Mohamed Fakir
   </footer>
+
+  <script>
+    (function () {
+      var META = {
+        fr: "Politique de confidentialité de l'application Toily : données collectées, hébergement, IA et vos droits RGPD.",
+        en: "Privacy Policy of the Toily app: data collected, hosting, AI and your GDPR rights."
+      };
+      var titleEl = document.querySelector('title');
+      var descEl = document.getElementById('meta-desc');
+      var buttons = document.querySelectorAll('[data-set-lang]');
+
+      function apply(lang) {
+        document.documentElement.lang = lang; // CSS keys off this to switch
+        titleEl.textContent = titleEl.getAttribute('data-title-' + lang);
+        if (descEl && META[lang]) descEl.setAttribute('content', META[lang]);
+        buttons.forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
+        });
+        try { localStorage.setItem('toily-privacy-lang', lang); } catch (e) {}
+      }
+
+      var saved = null;
+      try { saved = localStorage.getItem('toily-privacy-lang'); } catch (e) {}
+      var initial = saved || ((navigator.language || 'fr').toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en');
+
+      buttons.forEach(function (b) {
+        b.addEventListener('click', function () { apply(b.getAttribute('data-set-lang')); });
+      });
+
+      apply(initial);
+    })();
+  </script>
 </body>
 </html>
